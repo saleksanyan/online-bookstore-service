@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint . --ignore-pattern 'node_modules/*' --config eslint.config.mjs",
-        "precommit": "npm run lint && npm test"
+        "start dev": "tsc && node ./dist/main.js"
     },
     "devDependencies": {
         "@eslint/js": "^9.2.0",
@@ -20,7 +20,10 @@
         "typescript-eslint": "^7.8.0"
     },
     "dependencies": {
-        "express": "^4.19.2"
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "pg": "^8.11.5",
+        "typeorm": "^0.3.20"
     },
     "eslint.config": {
         "ignorePatterns": [
