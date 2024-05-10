@@ -5,7 +5,15 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint . --ignore-pattern 'node_modules/*' --config eslint.config.mjs",
-        "startdev": "tsc && node ./dist/main.js"
+        "startdev": "tsc && node ./dist/main.js",
+        "pre-commit": "npm run lint && npm test",
+        "prepare": "husky"
+    },
+    "lint-staged": {
+        "**/*": [
+            "eslint --fix",
+            "prettier --write"
+        ]
     },
     "devDependencies": {
         "@eslint/js": "^9.2.0",
@@ -15,6 +23,8 @@
         "@typescript-eslint/parser": "^7.8.0",
         "eslint": "^9.2.0",
         "globals": "^15.1.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
         "prettier": "^3.2.5",
         "typescript": "^5.4.5",
         "typescript-eslint": "^7.8.0"
@@ -32,5 +42,11 @@
         "ignorePatterns": [
             "node_modules/"
         ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "npm test"
+        }
     }
 }
