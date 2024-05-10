@@ -1,36 +1,45 @@
 {
-    "name": "online_bookstore_backend",
-    "version": "1.0.0",
-    "main": "main.ts",
-    "license": "MIT",
-    "scripts": {
-        "lint": "eslint . --ignore-pattern 'node_modules/*' --config eslint.config.mjs",
-        "startdev": "tsc && node ./dist/main.js"
-    },
-    "devDependencies": {
-        "@eslint/js": "^9.2.0",
-        "@types/express": "^4.17.21",
-        "@types/node": "^20.12.8",
-        "@typescript-eslint/eslint-plugin": "^7.8.0",
-        "@typescript-eslint/parser": "^7.8.0",
-        "eslint": "^9.2.0",
-        "globals": "^15.1.0",
-        "prettier": "^3.2.5",
-        "typescript": "^5.4.5",
-        "typescript-eslint": "^7.8.0"
-    },
-    "dependencies": {
-        "@types/swagger-ui-express": "^4.1.6",
-        "dotenv": "^16.4.5",
-        "express": "^4.19.2",
-        "pg": "^8.11.5",
-        "swagger-jsdoc": "^6.2.8",
-        "swagger-ui-express": "^5.0.0",
-        "typeorm": "^0.3.20"
-    },
-    "eslint.config": {
-        "ignorePatterns": [
-            "node_modules/"
-        ]
-    }
+   "name": "online_bookstore_backend",
+   "version": "1.0.0",
+   "main": "main.ts",
+   "license": "MIT",
+   "scripts": {
+      "lint": "eslint . --ignore-pattern 'node_modules/*' --config eslint.config.mjs",
+      "startdev": "tsc && node ./dist/main.js",
+      "start": "ts-node src/index.ts",
+      "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+      "migration:generate": "yarn typeorm -- -d src/data-source.ts migration:generate ./src/migration/InitialMigration",
+      "migration:run": "yarn typeorm -- -d src/data-source.ts migration:run"
+
+   },
+   "devDependencies": {
+      "@eslint/js": "^9.2.0",
+      "@types/express": "^4.17.21",
+      "@types/node": "^16.11.10",
+      "@typescript-eslint/eslint-plugin": "^7.8.0",
+      "@typescript-eslint/parser": "^7.8.0",
+      "eslint": "^9.2.0",
+      "globals": "^15.1.0",
+      "prettier": "^3.2.5",
+      "ts-node": "10.9.1",
+      "typescript": "4.5.2",
+      "typescript-eslint": "^7.8.0"
+   },
+   "dependencies": {
+      "@nestjs/common": "^10.3.8",
+      "@nestjs/config": "^3.2.2",
+      "@types/swagger-ui-express": "^4.1.6",
+      "dotenv": "^16.4.5",
+      "express": "^4.19.2",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.13",
+      "swagger-jsdoc": "^6.2.8",
+      "swagger-ui-express": "^5.0.0",
+      "typeorm": "0.3.20"
+   },
+   "eslint.config": {
+      "ignorePatterns": [
+         "node_modules/"
+      ]
+   }
 }
